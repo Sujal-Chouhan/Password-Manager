@@ -1,4 +1,3 @@
-from collections import namedtuple
 from getpass import getpass
 import hashlib
 import argparse
@@ -25,25 +24,22 @@ args = parser.parse_args()
 def getAndValidateMasterPassword():
 	masterpw = getpass("Input your Master Password: ")
 	hash_masterpw = hashlib.sha256(masterpw.encode()).hexdigest()
-	print(hash_masterpw)
 
 	pwdb = get_pwdb()
 	cursor = pwdb.cursor(named_tuple=True)
 	cursor.execute("SELECT * FROM pmdatabase.masterkeys")
 	result = cursor.fetchall()
-	print(type(result))
 	result = result[0][0]
-	print(result)
 	if hash_masterpw != result:
 		print("WRONG! Please Try Again")
 		return None
-	return [masterpw, result[1]]
+	return [masterpw, result[0]]
 
 
 def main():
 	if args.option in ["add", "a"]:
 		if args.website == None or args.url == None or args.username == None:
-			if args.name == None:
+			if args.website == None:
 				print("Website name (-w) required")
 			if args.url == None:
 				print("Website URL (-url) required")
@@ -73,13 +69,13 @@ def main():
 			search["username"] = args.username
 
 		if res is not None:
-			get_password.retrieve_password(res[0], res[1], search, decryptpassword= args.copy)
+			get_password.retrieve_password(res[0][0], res[0][1], search, decryptpassword= args.copy)
 
 	if args.option in ["gen", "generate"]:
-		if args.lenght == 0:
+		if args.length == 0:
 			print("Please enter the length of the password you would like to generate (-l) / (--length)")
 			return None
-		password = generate_password.generate_password(length = args.length)
+		password = generate_password.generate_password(length = int(args.length))
 		pyperclip.copy(password)
 		print("A Password has been generated and copied to your clipboard")
 

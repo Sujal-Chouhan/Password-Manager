@@ -21,7 +21,7 @@ def addEntry(mp, salt, website, websiteurl, username, email):
     #generates masterkey, which will be used to encrypt the password
     masterkey = getMasterKey(mp, salt)
     masterkey = base64.urlsafe_b64encode(masterkey)
-    print(f"masterkey type: {type(masterkey)}")
+    
 
     #encrypts password using fernet
     fernet = Fernet(masterkey)

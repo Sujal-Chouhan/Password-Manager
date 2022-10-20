@@ -1,5 +1,4 @@
 from getpass import getpass
-import mysql.connector
 import dbconfig
 import hashlib
 import random
