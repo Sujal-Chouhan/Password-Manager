@@ -50,17 +50,5 @@ def config():
 config()
 
 
-#def getandvalidatemasterpassword():
-
-    # masterpassword = getpass("Input your Master Password: ")
-    # hash_masterpassword = hashlib.sha256(masterpassword.encode()).hexdigest()
-
-    # db = pwdb()
-    # my_cursor = db.cursor()
-    # my_cursor.execute("SELECT * FROM passwordmanagerdatabase.masterkeys")
-    # outcome = my_cursor.fetchall()[0]
-
-    # if hash_masterpassword != outcome[0]:
-    #     pass
 
 
