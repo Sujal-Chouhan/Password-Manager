@@ -4,7 +4,7 @@ import hashlib
 import random
 import string
 
-
+# Creates a salt for the hash of the password
 def create_salt(length=10):
     return ''.join(random.choices(string.ascii_uppercase + string.digits, k = 10))
 
