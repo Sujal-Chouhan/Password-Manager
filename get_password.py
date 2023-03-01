@@ -10,8 +10,7 @@ def retrieve_password(masterpassword, salt, search, decryptpassword = False):
 	cursor = db.cursor(buffered=True)
 
 	query = ""
-	# print(f"search parameter: {search}")
-	# print(len(search))
+	
 	if len(search) == 0:
 		query = "SELECT * FROM pmdatabase.passwords"
 	else:
@@ -21,9 +20,7 @@ def retrieve_password(masterpassword, salt, search, decryptpassword = False):
 		query = query[:-5]
 	cursor.execute(query)
 	results = cursor.fetchall()
-	# print(f"Your results: {results}")
 	
-	# print(f"len of results: {len(results)}")
 
 	if len(results) == 0:
 		print("No results for your search")
@@ -44,7 +41,7 @@ def retrieve_password(masterpassword, salt, search, decryptpassword = False):
 			table.append(addition)
 
 		print(tabulate(table,headers="firstrow",tablefmt="github"))
-		#print(tabulate([['Website, Website URL, Email, Username'], ['youtube', 'youtube.com', 'me@youtube.com', 'derp'], ['discord', 'discord.com', 'discord@me.com', 'Derp']]))
+		
 		return
 	
 	if len(results) == 1 and decryptpassword == True:
