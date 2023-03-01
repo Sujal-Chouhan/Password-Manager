@@ -2,7 +2,7 @@
 A secure password manager that encrypts and stores user passwords in a MySQL database using Cryptography libraries
 Ensures the security of passwords against rainbow table and dictionary attacks through hashing and salting of master password
 
-**Features**
+## Features
 - Generate strong, randomized passwords for new accounts
 - Easily add, view, edit, and delete saved passwords
 - Search for specific accounts by name or username
@@ -23,5 +23,5 @@ To use, Follow the following steps:
  4) Enjoy! You can now add, generate, or extract passwords by simply typing "python pm.py" followed by your query. If you require further help, simply type "python pm.py     help"
 
 
-**Contributing**
+## Contributing
 If you'd like to contribute to this project, feel free to open a pull request. All contributions are welcome.
